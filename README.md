@@ -23,7 +23,7 @@ Python 환경	Python 3.8 + ROS 2 Foxy	Conda 비활성화 필수
 다음과 같은 폴더 구조를 가지고 있어야 합니다.
 (스크립트 내부 경로는 상대 경로 기준으로 작성된 것으로 가정)
 
-mmdeploy/ROS/3dod_ros2/
+3dod_ros2/
 ├── configs/
 │   ├── deploy/
 │   │   └── voxel-detection_tensorrt_dynamic-nus-20x5.py
@@ -34,7 +34,7 @@ mmdeploy/ROS/3dod_ros2/
 └── requirements.txt
 
 2.2. Python / ROS 환경 설정
-1) Conda 비활성화 (매우 중요)
+1) Conda 비활성화
 
 ROS 2는 Conda 환경과 충돌하므로 반드시 비활성화해야 합니다.
 
@@ -69,7 +69,7 @@ python inference_node_ros2.py
 노드는 /iv_points 토픽을 구독하기 전까지 대기 상태로 유지됩니다.
 
 3.3. LiDAR 데이터 재생 (별도 터미널)
-ros2 bag play 1_merged.db3
+ros2 bag play bagfile.db3
 
 
 이때 bag 파일이 /iv_points 토픽을 포함해야 합니다.
@@ -79,8 +79,12 @@ ros2 bag play 1_merged.db3
 토픽 이름	메시지 타입	설명
 /iv_points	sensor_msgs/msg/PointCloud2	LiDAR 포인트 클라우드 데이터
 출력 (Publishing)
-토픽 이름	메시지 타입	설명
-/imlab/obstacle	std_msgs/msg/Float64MultiArray	감지된 장애물의 2D 중심 좌표 (최대 3개)
+토픽 이름:
+/imlab/obstacle
+메시지 타입:
+std_msgs/msg/Float64MultiArray
+설명:
+감지된 장애물의 2D 중심 좌표 (최대 3개)
 데이터 구조:
 [x1, y1, x2, y2, x3, y3]
 
